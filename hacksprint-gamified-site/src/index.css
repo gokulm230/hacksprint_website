@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-
-
 @layer base {
   * {
     @apply box-border;
@@ -13,15 +11,31 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Pixelify Sans', sans-serif !important;
   }
 }
+
 
 @layer utilities {
   .text-shadow-glow {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
                  0 0 20px rgba(255, 255, 255, 0.3),
                  0 0 30px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Custom font utility classes with high specificity */
+  .pixel-font {
+    font-family: 'Pixelify Sans', monospace !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+  }
+  
+  .space-font {
+    font-family: 'Orbitron', sans-serif !important;
+  }
+  
+  .body-font {
+    font-family: 'Rajdhani', sans-serif !important;
   }
   
   /* Custom Spaceship Cursor */

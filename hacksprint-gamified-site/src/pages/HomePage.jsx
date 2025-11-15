@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import EmergencyButton from '../components/EmergencyButton';
-import StarfieldBackground from '../components/StarfieldBackground';
-import SpaceshipLoadingAnimation from '../components/SpaceShipLoading';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion, useScroll, useTransform } from "framer-motion";
+import EmergencyButton from "../components/EmergencyButton";
+import StarfieldBackground from "../components/StarfieldBackground";
+import SpaceshipLoadingAnimation from "../components/SpaceShipLoading";
+import NavigationOrb from "../components/NavigationOrb";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,10 +12,10 @@ const Home = () => {
 
   const handleStartLoading = () => {
     setIsLoading(true);
-    
+
     // Show loading for 3 seconds, then navigate to about page
     setTimeout(() => {
-      navigate('/about');
+      navigate("/about");
     }, 3000);
   };
 
@@ -29,9 +30,9 @@ const Home = () => {
       opacity: 1,
       transition: {
         delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -42,9 +43,9 @@ const Home = () => {
       transition: {
         type: "spring",
         damping: 12,
-        stiffness: 200
-      }
-    }
+        stiffness: 200,
+      },
+    },
   };
 
   const titleVariants = {
@@ -56,8 +57,8 @@ const Home = () => {
         type: "spring",
         damping: 10,
         stiffness: 100,
-        delay: 0.5
-      }
+        delay: 0.5,
+      },
     },
     hover: {
       scale: 1.05,
@@ -65,9 +66,9 @@ const Home = () => {
       transition: {
         type: "spring",
         damping: 10,
-        stiffness: 400
-      }
-    }
+        stiffness: 400,
+      },
+    },
   };
 
   const floatingVariants = {
@@ -76,13 +77,13 @@ const Home = () => {
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="relative w-full h-screen overflow-hidden bg-black spaceship-cursor"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -90,48 +91,52 @@ const Home = () => {
     >
       {/* Three.js Canvas for 3D starfield background */}
       <StarfieldBackground />
-      
+
+     
+
       {/* Main content overlay */}
-      <motion.div 
-        className="absolute inset-0 z-10 flex flex-col items-center justify-center"
+      <motion.div
+        className="absolute inset-0 z-10 flex flex-col items-center justify-center pl-16 md:pl-24 lg:pl-32"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Title Section */}
-        <motion.div 
-          className="text-center space-y-4"
-          variants={itemVariants}
-        >
-          <motion.h1 
-            className="text-6xl md:text-8xl font-black text-white tracking-wider cursor-pointer"
+        <motion.div className="text-center space-y-4" variants={itemVariants}>
+          <motion.h1
+            className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-wider cursor-pointer"
             variants={titleVariants}
             whileHover="hover"
             style={{
-              textShadow: "0px 0px 20px rgba(6, 182, 212, 0.5)"
+              fontFamily: "'Pixelify Sans', monospace",
+              fontWeight: 700,
+              textShadow: "0px 0px 20px rgba(6, 182, 212, 0.5)",
             }}
           >
             HACKSPRINT
           </motion.h1>
-          
-          <motion.p 
-            className="text-xl md:text-3xl text-cyan-400 font-semibold tracking-wide"
+
+          <motion.p
+            className="text-lg md:text-2xl text-cyan-400 font-semibold tracking-wide"
             variants={itemVariants}
-            whileHover={{ 
-              scale: 1.1, 
+            whileHover={{
+              scale: 1.1,
               color: "#22d3ee",
-              transition: { type: "spring", stiffness: 300 }
+              transition: { type: "spring", stiffness: 300 },
+            }}
+            style={{
+              fontFamily: "'Orbitron', sans-serif",
             }}
           >
             36 HOUR HACKATHON
           </motion.p>
-          
-          <motion.p 
-            className="text-lg md:text-xl text-white/80 font-light mt-6"
+
+          <motion.p
+            className="text-lg md:text-xl text-white/80 font-light mt-6 body-font"
             variants={itemVariants}
-            whileHover={{ 
+            whileHover={{
               color: "#ffffff",
-              transition: { duration: 0.3 }
+              transition: { duration: 0.3 },
             }}
           >
             Are You Ready to Join the Crew?
@@ -139,7 +144,7 @@ const Home = () => {
         </motion.div>
 
         {/* Emergency Start Button */}
-        <motion.div 
+        <motion.div
           className="mt-16"
           variants={floatingVariants}
           animate="animate"
@@ -172,7 +177,7 @@ const Home = () => {
                 duration: 3,
                 repeat: Infinity,
                 delay: i * 0.5,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
             />
           ))}
