@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import StarfieldBackground from '../components/StarfieldBackground';
-import NavigationOrb from '../components/NavigationOrb';
 
 const FAQPage = () => {
   const containerVariants = {
@@ -53,25 +52,23 @@ const FAQPage = () => {
 
   return (
     <motion.div 
-      className="relative w-full min-h-screen overflow-hidden bg-black spaceship-cursor"
+      className="relative w-full min-h-screen bg-black spaceship-cursor"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
     >
-      <StarfieldBackground />
-      
-      {/* Navigation Orb */}
-      <div className="fixed bottom-8 right-8 z-30">
-        <NavigationOrb />
+      <div className="fixed inset-0 w-full h-full">
+        <StarfieldBackground />
       </div>
-
+      
+      
       <motion.div 
-        className="absolute inset-0 z-10 flex flex-col items-center justify-center p-8 py-16"
+        className="relative z-10 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 py-12 sm:py-16 min-h-screen page-with-progress-bar"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.div className="text-center space-y-8 max-w-4xl w-full" variants={containerVariants}>
+        <motion.div className="text-center space-y-4 sm:space-y-6 md:space-y-8 max-w-4xl w-full px-4" variants={containerVariants}>
           <motion.h1 
             className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-wider cursor-pointer"
             variants={itemVariants}
@@ -92,7 +89,7 @@ const FAQPage = () => {
             Frequently Asked Questions
           </motion.p>
 
-          <motion.div className="space-y-4 mt-12">
+          <motion.div className="space-y-3 sm:space-y-4 mt-8 sm:mt-12">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}

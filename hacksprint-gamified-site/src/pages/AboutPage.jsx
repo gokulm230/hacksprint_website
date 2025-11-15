@@ -9,7 +9,6 @@ import {
 } from "framer-motion";
 import { useRef, useEffect } from "react";
 import StarfieldBackground from "../components/StarfieldBackground";
-import NavigationOrb from "../components/NavigationOrb";
 
 const AboutPage = () => {
   const navigate = useNavigate();
@@ -157,13 +156,15 @@ const AboutPage = () => {
 
   return (
     <motion.div
-      className="relative w-full h-screen overflow-hidden bg-black spaceship-cursor"
+      className="relative w-full min-h-screen bg-black spaceship-cursor"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
     >
       {/* Three.js Canvas for 3D starfield background */}
-      <StarfieldBackground />
+      <div className="fixed inset-0 w-full h-full">
+        <StarfieldBackground />
+      </div>
 
       {/* Mouse-Following Among Us Character - Top Right Corner */}
       <motion.div
@@ -325,14 +326,14 @@ const AboutPage = () => {
 
       {/* Main content overlay */}
       <motion.div
-        className="absolute inset-0 z-10 flex flex-col items-center justify-center p-8"
+        className="relative z-10 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 py-12 sm:py-16 min-h-screen page-with-progress-bar"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.div
           ref={contentRef}
-          className="text-center space-y-8 max-w-4xl"
+          className="text-center space-y-4 sm:space-y-6 md:space-y-8 max-w-4xl px-4"
           variants={containerVariants}
         >
           <motion.h1
@@ -439,23 +440,7 @@ const AboutPage = () => {
           </motion.div>
         </motion.div>
 
-        {/* Navigation Orb - Bottom Right */}
-        <motion.div
-          className="fixed bottom-8 right-8 z-30"
-          initial={{ opacity: 0, y: 50, rotate: -45 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            rotate: 0,
-          }}
-          transition={{
-            delay: 2.5,
-            type: "spring",
-            damping: 20,
-          }}
-        >
-          <NavigationOrb />
-        </motion.div>
+        
 
         {/* Floating interactive elements */}
         <motion.div

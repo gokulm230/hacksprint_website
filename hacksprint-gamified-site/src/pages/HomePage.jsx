@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import EmergencyButton from "../components/EmergencyButton";
 import StarfieldBackground from "../components/StarfieldBackground";
 import SpaceshipLoadingAnimation from "../components/SpaceShipLoading";
-import NavigationOrb from "../components/NavigationOrb";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -112,19 +111,19 @@ const Home = () => {
 
   return (
     <motion.div
-      className="relative w-full h-screen overflow-hidden bg-black spaceship-cursor"
+      className="relative w-full min-h-screen bg-black spaceship-cursor"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
       {/* Three.js Canvas for 3D starfield background */}
-      <StarfieldBackground />
-
-     
+      <div className="fixed inset-0 w-full h-full">
+        <StarfieldBackground />
+      </div>
 
       {/* Main content overlay */}
       <motion.div
-        className="absolute inset-0 z-10 flex flex-col items-center justify-center pl-16 md:pl-24 lg:pl-32"
+        className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-12 sm:py-16 min-h-screen"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -486,7 +485,7 @@ const Home = () => {
             </motion.p>
             
             <motion.div
-              className="flex justify-center items-center space-x-4 md:space-x-8"
+              className="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8"
               variants={itemVariants}
             >
               {/* Days */}
@@ -504,7 +503,7 @@ const Home = () => {
                 }}
               >
                 <motion.div
-                  className="bg-gradient-to-b from-cyan-400 to-blue-600 text-black font-black text-2xl md:text-4xl px-3 py-2 md:px-4 md:py-3 rounded-lg border-2 border-cyan-300"
+                  className="bg-gradient-to-b from-cyan-400 to-blue-600 text-black font-black text-lg sm:text-xl md:text-2xl lg:text-4xl px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 rounded-lg border-2 border-cyan-300"
                   style={{ fontFamily: "'Pixelify Sans', monospace" }}
                   animate={{
                     boxShadow: [
@@ -541,7 +540,7 @@ const Home = () => {
                 }}
               >
                 <motion.div
-                  className="bg-gradient-to-b from-purple-400 to-purple-600 text-white font-black text-2xl md:text-4xl px-3 py-2 md:px-4 md:py-3 rounded-lg border-2 border-purple-300"
+                  className="bg-gradient-to-b from-purple-400 to-purple-600 text-white font-black text-lg sm:text-xl md:text-2xl lg:text-4xl px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 rounded-lg border-2 border-purple-300"
                   style={{ fontFamily: "'Pixelify Sans', monospace" }}
                   animate={{
                     boxShadow: [
@@ -579,7 +578,7 @@ const Home = () => {
                 }}
               >
                 <motion.div
-                  className="bg-gradient-to-b from-pink-400 to-pink-600 text-white font-black text-2xl md:text-4xl px-3 py-2 md:px-4 md:py-3 rounded-lg border-2 border-pink-300"
+                  className="bg-gradient-to-b from-pink-400 to-pink-600 text-white font-black text-lg sm:text-xl md:text-2xl lg:text-4xl px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 rounded-lg border-2 border-pink-300"
                   style={{ fontFamily: "'Pixelify Sans', monospace" }}
                   animate={{
                     boxShadow: [
@@ -617,7 +616,7 @@ const Home = () => {
                 }}
               >
                 <motion.div
-                  className="bg-gradient-to-b from-green-400 to-green-600 text-black font-black text-2xl md:text-4xl px-3 py-2 md:px-4 md:py-3 rounded-lg border-2 border-green-300"
+                  className="bg-gradient-to-b from-green-400 to-green-600 text-black font-black text-lg sm:text-xl md:text-2xl lg:text-4xl px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 rounded-lg border-2 border-green-300"
                   style={{ fontFamily: "'Pixelify Sans', monospace" }}
                   animate={{
                     boxShadow: [
