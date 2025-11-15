@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+  
+  body {
+    @apply m-0 p-0 overflow-hidden;
+    font-family: 'Rajdhani', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Custom Spaceship Cursor */
+  .spaceship-cursor {
+    cursor: url('/spaceship-cursor.svg') 20 22, auto;
+  }
+  
+  .spaceship-cursor * {
+    cursor: url('/spaceship-cursor.svg') 20 22, auto;
+  }
+  
+  /* Enhanced hover cursor for interactive elements */
+  .spaceship-cursor button,
+  .spaceship-cursor a,
+  .spaceship-cursor [role="button"],
+  .spaceship-cursor .cursor-pointer {
+    cursor: url('/spaceship-cursor-hover.svg') 14 20, pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .spaceship-cursor button:hover,
+  .spaceship-cursor a:hover,
+  .spaceship-cursor [role="button"]:hover,
+  .spaceship-cursor .cursor-pointer:hover {
+    filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.6));
+  }
+  
+  /* Special cursor for Among Us character */
+  .spaceship-cursor .among-us-character {
+    cursor: url('/spaceship-cursor-hover.svg') 14 20, pointer;
+  }
+}
