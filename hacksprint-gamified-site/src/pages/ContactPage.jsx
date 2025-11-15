@@ -87,7 +87,7 @@ const ContactPage = () => {
      
 
       <motion.div 
-        className="relative z-10 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 py-12 sm:py-16 min-h-screen page-with-progress-bar"
+        className="relative z-10 flex flex-col items-center justify-start p-4 sm:p-6 md:p-8 py-12 sm:py-16 min-h-screen page-with-progress-bar"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

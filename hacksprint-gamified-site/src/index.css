@@ -5,9 +5,14 @@
     @apply box-border;
   }
   
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
-    @apply m-0 p-0 overflow-hidden;
+    @apply m-0 p-0 overflow-x-hidden;
     font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -50,6 +55,13 @@
   /* Page spacing for fixed progress bar */
   .page-with-progress-bar {
     padding-top: 5rem;
+  }
+  
+  /* Ensure proper scrolling behavior */
+  .page-container {
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
   }
   
   /* Enhanced hover cursor for interactive elements */
