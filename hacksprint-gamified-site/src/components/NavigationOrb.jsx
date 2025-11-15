@@ -80,7 +80,7 @@ const NavigationOrb = () => {
         <motion.img
           src="/pngwing.com.png"
           alt="Navigation Menu"
-          className="w-16 h-16 md:w-24 md:h-24 opacity-60 drop-shadow-lg hover:opacity-80 transition-opacity"
+          className="w-20 h-20 md:w-24 md:h-24 opacity-60 drop-shadow-lg hover:opacity-80 transition-opacity"
           animate={{
             rotate: isMenuOpen ? [0, 180] : [0, 360],
             scale: isMenuOpen ? [0.8, 1.1, 1] : [0.8, 1, 0.8],

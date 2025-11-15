@@ -3,50 +3,24 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Rotating stars component using drei
-const RotatingStars = () => {
-  const starsRef = useRef();
-  
-  useFrame((state, delta) => {
-    if (starsRef.current) {
-      starsRef.current.rotation.x += delta * 0.05;
-      starsRef.current.rotation.y += delta * 0.02;
-    }
-  });
-  
+// Static stars component using drei
+const StaticStars = () => {
   return (
     <Stars
-      ref={starsRef}
       radius={100}
       depth={50}
       count={5000}
       factor={4}
       saturation={0}
       fade={true}
-      speed={1}
+      speed={0}
     />
   );
 };
 
-// Custom twinkling star particles
-const TwinklingStars = () => {
-  const particlesRef = useRef();
-  
-  useFrame((state) => {
-    if (particlesRef.current) {
-      const time = state.clock.getElapsedTime();
-      const positions = particlesRef.current.geometry.attributes.position;
-      
-      // Subtle twinkling effect
-      for (let i = 0; i < positions.count; i++) {
-        const i3 = i * 3;
-        positions.array[i3 + 1] += Math.sin(time + i) * 0.01;
-      }
-      positions.needsUpdate = true;
-    }
-  });
-  
-  // Generate random star positions
+// Static star particles
+const StaticStarParticles = () => {
+  // Generate random star positions (fixed positions)
   const particlesCount = 1000;
   const positions = new Float32Array(particlesCount * 3);
   
@@ -58,7 +32,7 @@ const TwinklingStars = () => {
   }
   
   return (
-    <points ref={particlesRef}>
+    <points>
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
@@ -86,8 +60,8 @@ const StarfieldBackground = () => {
         className="w-full h-full"
       >
         <color attach="background" args={['#000000']} />
-        <RotatingStars />
-        <TwinklingStars />
+        <StaticStars />
+        <StaticStarParticles />
       </Canvas>
     </div>
   );
