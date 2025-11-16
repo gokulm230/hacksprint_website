@@ -692,7 +692,7 @@ const Home = () => {
 
         <button
           className="apply-button "
-          data-hackathon-slug="YOUR-HACKATHON-SLUG"
+          data-hackathon-slug="hacksprint2"
           data-button-theme="dark-inverted"
         ></button>
 
