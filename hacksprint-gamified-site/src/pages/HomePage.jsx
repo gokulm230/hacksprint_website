@@ -122,6 +122,106 @@ const Home = () => {
     },
   };
 
+  // Sponsors data (embedded into Home page)
+  const sponsorTiers = {
+    platinum: [
+      {
+        name: "Devfolio",
+        image: "./Devfolio_Logo-Colored.svg",
+        alt: "DEVFOLIO LOGO",
+        link: "https://devfolio.co/",
+        description: "Leading hackathon platform empowering developers globally",
+      },
+    ],
+    gold: [
+      {
+        name: "ETHIndia",
+        image: "./ethindia-dark.svg",
+        alt: "ETHINDIA LOGO",
+        link: "https://ethindia.co/",
+        description: "India's largest Ethereum hackathon and developer community",
+      },
+    ],
+    silver: [
+      {
+        name: "TechCorp",
+        image: "techcorp-logo.png",
+        alt: "TechCorp Logo",
+        link: "#",
+        description: "Global leaders in cloud computing and enterprise solutions",
+      },
+      {
+        name: "InnovateLab",
+        image: "innovate-logo.png",
+        alt: "InnovateLab Logo",
+        link: "#",
+        description: "Pioneering AI research and development",
+      },
+    ],
+    bronze: [
+      {
+        name: "SecureNet",
+        image: "securenet-logo.png",
+        alt: "SecureNet Logo",
+        link: "#",
+        description: "Experts in cybersecurity and data protection",
+      },
+      {
+        name: "IoT Solutions",
+        image: "iot-logo.png",
+        alt: "IoT Solutions Logo",
+        link: "#",
+        description: "Innovators in IoT and smart device technology",
+      },
+      {
+        name: "OpenSource Inc",
+        image: "opensource-logo.png",
+        alt: "OpenSource Inc Logo",
+        link: "#",
+        description: "Champions of open-source software development",
+      },
+    ],
+  };
+
+  const tierConfig = {
+    platinum: {
+      title: "PLATINUM SPONSORS",
+      color: "from-gray-300 to-gray-100",
+      borderColor: "border-gray-300/50",
+      textColor: "text-gray-300",
+      glowColor: "rgba(229, 231, 235, 0.8)",
+      cardSize: "col-span-full",
+      logoSize: "h-32",
+    },
+    gold: {
+      title: "GOLD SPONSORS",
+      color: "from-yellow-400 to-yellow-600",
+      borderColor: "border-yellow-400/50",
+      textColor: "text-yellow-400",
+      glowColor: "rgba(251, 191, 36, 0.8)",
+      cardSize: "col-span-full lg:col-span-2",
+      logoSize: "h-24",
+    },
+    silver: {
+      title: "SILVER SPONSORS",
+      color: "from-gray-400 to-gray-600",
+      borderColor: "border-gray-400/50",
+      textColor: "text-gray-400",
+      glowColor: "rgba(156, 163, 175, 0.8)",
+      cardSize: "col-span-1 lg:col-span-1",
+      logoSize: "h-20",
+    },
+    bronze: {
+      title: "BRONZE SPONSORS",
+      color: "from-orange-600 to-orange-800",
+      borderColor: "border-orange-600/50",
+      textColor: "text-orange-400",
+      glowColor: "rgba(234, 88, 12, 0.8)",
+      cardSize: "col-span-1",
+      logoSize: "h-16",
+    },
+  };
+
   return (
     <motion.div
       className="relative w-full min-h-screen bg-black spaceship-cursor"
@@ -695,6 +795,78 @@ const Home = () => {
           data-hackathon-slug="hacksprint2"
           data-button-theme="dark-inverted"
         ></button>
+
+        {/* Sponsors Section (inlined from SponsorsPage) */}
+        <motion.div
+          className="w-full max-w-6xl mt-12 px-4 sm:px-6"
+          variants={containerVariants}
+        >
+          <motion.h2
+            className="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-wider text-center mb-6"
+            variants={itemVariants}
+            style={{ fontFamily: "'Pixelify Sans', monospace", fontWeight: 700 }}
+          >
+            SPONSORS
+          </motion.h2>
+
+          <motion.div className="space-y-12 mt-4" variants={containerVariants}>
+            {Object.entries(sponsorTiers).map(([tier, sponsors]) => {
+              const config = tierConfig[tier];
+              if (!sponsors || sponsors.length === 0) return null;
+
+              return (
+                <motion.div key={tier} className="space-y-6" variants={containerVariants}>
+                  <motion.div className="text-center" variants={itemVariants}>
+                    <motion.h3
+                      className={`text-2xl md:text-3xl font-black tracking-wider ${config.textColor}`}
+                      style={{ fontFamily: "'Pixelify Sans', monospace", textShadow: `0px 0px 20px ${config.glowColor}` }}
+                      variants={itemVariants}
+                    >
+                      {config.title}
+                    </motion.h3>
+                  </motion.div>
+
+                  <motion.div
+                    className={`grid grid-cols-1 ${tier === 'bronze' ? 'sm:grid-cols-2 lg:grid-cols-3' : tier === 'silver' ? 'sm:grid-cols-1 lg:grid-cols-2' : 'sm:grid-cols-1'} gap-6`}
+                    variants={containerVariants}
+                  >
+                    {sponsors.map((sponsor) => (
+                      <motion.div
+                        key={sponsor.name}
+                        className={`relative bg-linear-to-br from-black/40 to-black/20 border ${config.borderColor} rounded-xl p-6 backdrop-blur-sm cursor-pointer group`}
+                        variants={itemVariants}
+                        whileHover={{ scale: 1.03, boxShadow: `0 0 30px ${config.glowColor}` }}
+                        onClick={() => sponsor.link !== "#" && window.open(sponsor.link, "_blank")}
+                      >
+                        <div className={`w-full ${config.logoSize} bg-white/90 rounded-lg flex items-center justify-center mb-4 p-4 group-hover:bg-white transition-all duration-300`}>
+                          <img
+                            src={sponsor.image}
+                            alt={sponsor.alt}
+                            className="max-h-full max-w-full object-contain"
+                            onError={(e) => { e.target.src = `https://via.placeholder.com/200x100/374151/ffffff?text=${sponsor.name}`; }}
+                          />
+                        </div>
+
+                        <div className="text-center">
+                          <h4 className={`${config.textColor} font-bold text-xl mb-2 group-hover:text-white transition-colors duration-300`}>
+                            {sponsor.name}
+                          </h4>
+                          <p className="text-white/80 text-sm leading-relaxed">{sponsor.description}</p>
+                        </div>
+
+                        <div className="absolute top-4 right-4">
+                          <div className={`px-3 py-1 rounded-full text-xs font-bold bg-linear-to-r ${config.color} text-black uppercase tracking-wide`}>
+                            {tier}
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </motion.div>
 
         {/* Interactive particles */}
         <motion.div
