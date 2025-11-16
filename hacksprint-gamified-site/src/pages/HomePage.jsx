@@ -11,25 +11,38 @@ const Home = () => {
     days: 97,
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   });
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://apply.devfolio.co/v2/sdk.js";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   // Countdown timer effect
   useEffect(() => {
     const targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + 97);
-    
+
     const timer = setInterval(() => {
       const now = new Date().getTime();
       const distance = targetDate.getTime() - now;
-      
+
       if (distance > 0) {
         setTimeLeft({
           days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          hours: Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          ),
           minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000)
+          seconds: Math.floor((distance % (1000 * 60)) / 1000),
         });
       }
     }, 1000);
@@ -130,7 +143,7 @@ const Home = () => {
       >
         {/* Title Section */}
         <motion.div className="text-center space-y-4" variants={itemVariants}>
-          <motion.div 
+          <motion.div
             className="relative inline-block"
             variants={titleVariants}
             whileHover="hover"
@@ -156,7 +169,7 @@ const Home = () => {
                 strokeWidth="3"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ 
+                animate={{
                   pathLength: [0, 1, 0],
                   opacity: [0, 1, 0],
                 }}
@@ -167,17 +180,18 @@ const Home = () => {
                   delay: 0,
                 }}
                 style={{
-                  filter: "drop-shadow(0 0 8px #00bfff) drop-shadow(0 0 15px #0080ff)",
+                  filter:
+                    "drop-shadow(0 0 8px #00bfff) drop-shadow(0 0 15px #0080ff)",
                 }}
               />
-              
+
               <motion.path
                 d="M300 120 L400 70 L370 130 L450 90 L420 150 L500 110"
                 stroke="#4da6ff"
                 strokeWidth="2"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ 
+                animate={{
                   pathLength: [0, 1, 0],
                   opacity: [0, 1, 0],
                 }}
@@ -188,7 +202,8 @@ const Home = () => {
                   delay: 0.3,
                 }}
                 style={{
-                  filter: "drop-shadow(0 0 6px #4da6ff) drop-shadow(0 0 12px #0080ff)",
+                  filter:
+                    "drop-shadow(0 0 6px #4da6ff) drop-shadow(0 0 12px #0080ff)",
                 }}
               />
 
@@ -198,7 +213,7 @@ const Home = () => {
                 strokeWidth="2.5"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ 
+                animate={{
                   pathLength: [0, 1, 0],
                   opacity: [0, 1, 0],
                 }}
@@ -209,7 +224,8 @@ const Home = () => {
                   delay: 0.6,
                 }}
                 style={{
-                  filter: "drop-shadow(0 0 6px #66ccff) drop-shadow(0 0 12px #0080ff)",
+                  filter:
+                    "drop-shadow(0 0 6px #66ccff) drop-shadow(0 0 12px #0080ff)",
                 }}
               />
 
@@ -220,7 +236,7 @@ const Home = () => {
                 strokeWidth="1.5"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ 
+                animate={{
                   pathLength: [0, 1, 0],
                   opacity: [0, 0.8, 0],
                 }}
@@ -241,7 +257,7 @@ const Home = () => {
                 strokeWidth="1.5"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ 
+                animate={{
                   pathLength: [0, 1, 0],
                   opacity: [0, 0.8, 0],
                 }}
@@ -263,7 +279,7 @@ const Home = () => {
                 strokeWidth="4"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ 
+                animate={{
                   pathLength: [0, 1],
                   opacity: [0, 1, 1, 0],
                 }}
@@ -275,7 +291,8 @@ const Home = () => {
                   repeatDelay: 3,
                 }}
                 style={{
-                  filter: "drop-shadow(0 0 12px #ffffff) drop-shadow(0 0 20px #00bfff) drop-shadow(0 0 30px #0080ff)",
+                  filter:
+                    "drop-shadow(0 0 12px #ffffff) drop-shadow(0 0 20px #00bfff) drop-shadow(0 0 30px #0080ff)",
                 }}
               />
 
@@ -285,7 +302,7 @@ const Home = () => {
                 strokeWidth="3"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ 
+                animate={{
                   pathLength: [0, 1],
                   opacity: [0, 0.9, 0.9, 0],
                 }}
@@ -297,7 +314,8 @@ const Home = () => {
                   repeatDelay: 4,
                 }}
                 style={{
-                  filter: "drop-shadow(0 0 8px #e0f7ff) drop-shadow(0 0 16px #00bfff)",
+                  filter:
+                    "drop-shadow(0 0 8px #e0f7ff) drop-shadow(0 0 16px #00bfff)",
                 }}
               />
 
@@ -307,7 +325,7 @@ const Home = () => {
                 strokeWidth="2.5"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ 
+                animate={{
                   pathLength: [0, 1],
                   opacity: [0, 0.8, 0.8, 0],
                 }}
@@ -319,7 +337,8 @@ const Home = () => {
                   repeatDelay: 5,
                 }}
                 style={{
-                  filter: "drop-shadow(0 0 6px #b3e6ff) drop-shadow(0 0 12px #00bfff)",
+                  filter:
+                    "drop-shadow(0 0 6px #b3e6ff) drop-shadow(0 0 12px #00bfff)",
                 }}
               />
 
@@ -330,7 +349,7 @@ const Home = () => {
                 strokeWidth="3"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ 
+                animate={{
                   pathLength: [0, 1],
                   opacity: [0, 1, 1, 0],
                 }}
@@ -342,7 +361,8 @@ const Home = () => {
                   repeatDelay: 6,
                 }}
                 style={{
-                  filter: "drop-shadow(0 0 10px #ffffff) drop-shadow(0 0 18px #00bfff)",
+                  filter:
+                    "drop-shadow(0 0 10px #ffffff) drop-shadow(0 0 18px #00bfff)",
                 }}
               />
 
@@ -352,7 +372,7 @@ const Home = () => {
                 strokeWidth="2"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ 
+                animate={{
                   pathLength: [0, 1],
                   opacity: [0, 0.9, 0.9, 0],
                 }}
@@ -364,7 +384,8 @@ const Home = () => {
                   repeatDelay: 7,
                 }}
                 style={{
-                  filter: "drop-shadow(0 0 8px #ccf2ff) drop-shadow(0 0 15px #00bfff)",
+                  filter:
+                    "drop-shadow(0 0 8px #ccf2ff) drop-shadow(0 0 15px #00bfff)",
                 }}
               />
             </motion.svg>
@@ -373,7 +394,8 @@ const Home = () => {
             <motion.div
               className="absolute inset-0 -m-8"
               style={{
-                background: "radial-gradient(ellipse at center, rgba(0, 191, 255, 0.3) 0%, rgba(0, 128, 255, 0.2) 30%, transparent 70%)",
+                background:
+                  "radial-gradient(ellipse at center, rgba(0, 191, 255, 0.3) 0%, rgba(0, 128, 255, 0.2) 30%, transparent 70%)",
                 filter: "blur(20px)",
               }}
               animate={{
@@ -410,7 +432,7 @@ const Home = () => {
                 textShadow: [
                   `0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 15px #00bfff, 0 0 20px #0080ff, 0 0 35px #0080ff, 0 0 40px #0080ff`,
                   `0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff, 0 0 40px #0080ff, 0 0 70px #0080ff, 0 0 80px #0080ff`,
-                  `0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 15px #00bfff, 0 0 20px #0080ff, 0 0 35px #0080ff, 0 0 40px #0080ff`
+                  `0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 15px #00bfff, 0 0 20px #0080ff, 0 0 35px #0080ff, 0 0 40px #0080ff`,
                 ],
               }}
               transition={{
@@ -465,10 +487,7 @@ const Home = () => {
           </motion.p>
 
           {/* Countdown Timer */}
-          <motion.div
-            className="mt-8 text-center"
-            variants={itemVariants}
-          >
+          <motion.div className="mt-8 text-center" variants={itemVariants}>
             <motion.p
               className="text-sm md:text-lg text-cyan-400 font-semibold mb-4 tracking-wide"
               style={{ fontFamily: "'Orbitron', sans-serif" }}
@@ -483,7 +502,7 @@ const Home = () => {
             >
               LAUNCH COUNTDOWN
             </motion.p>
-            
+
             <motion.div
               className="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8"
               variants={itemVariants}
@@ -509,7 +528,7 @@ const Home = () => {
                     boxShadow: [
                       "0 0 20px rgba(34, 211, 238, 0.5)",
                       "0 0 30px rgba(34, 211, 238, 0.8)",
-                      "0 0 20px rgba(34, 211, 238, 0.5)"
+                      "0 0 20px rgba(34, 211, 238, 0.5)",
                     ],
                   }}
                   transition={{
@@ -518,9 +537,12 @@ const Home = () => {
                     ease: "easeInOut",
                   }}
                 >
-                  {String(timeLeft.days).padStart(2, '0')}
+                  {String(timeLeft.days).padStart(2, "0")}
                 </motion.div>
-                <p className="text-cyan-400 text-xs md:text-sm mt-2 font-semibold" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                <p
+                  className="text-cyan-400 text-xs md:text-sm mt-2 font-semibold"
+                  style={{ fontFamily: "'Orbitron', sans-serif" }}
+                >
                   DAYS
                 </p>
               </motion.div>
@@ -546,7 +568,7 @@ const Home = () => {
                     boxShadow: [
                       "0 0 20px rgba(168, 85, 247, 0.5)",
                       "0 0 30px rgba(168, 85, 247, 0.8)",
-                      "0 0 20px rgba(168, 85, 247, 0.5)"
+                      "0 0 20px rgba(168, 85, 247, 0.5)",
                     ],
                   }}
                   transition={{
@@ -556,9 +578,12 @@ const Home = () => {
                     delay: 0.3,
                   }}
                 >
-                  {String(timeLeft.hours).padStart(2, '0')}
+                  {String(timeLeft.hours).padStart(2, "0")}
                 </motion.div>
-                <p className="text-purple-400 text-xs md:text-sm mt-2 font-semibold" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                <p
+                  className="text-purple-400 text-xs md:text-sm mt-2 font-semibold"
+                  style={{ fontFamily: "'Orbitron', sans-serif" }}
+                >
                   HOURS
                 </p>
               </motion.div>
@@ -584,7 +609,7 @@ const Home = () => {
                     boxShadow: [
                       "0 0 20px rgba(236, 72, 153, 0.5)",
                       "0 0 30px rgba(236, 72, 153, 0.8)",
-                      "0 0 20px rgba(236, 72, 153, 0.5)"
+                      "0 0 20px rgba(236, 72, 153, 0.5)",
                     ],
                   }}
                   transition={{
@@ -594,9 +619,12 @@ const Home = () => {
                     delay: 0.6,
                   }}
                 >
-                  {String(timeLeft.minutes).padStart(2, '0')}
+                  {String(timeLeft.minutes).padStart(2, "0")}
                 </motion.div>
-                <p className="text-pink-400 text-xs md:text-sm mt-2 font-semibold" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                <p
+                  className="text-pink-400 text-xs md:text-sm mt-2 font-semibold"
+                  style={{ fontFamily: "'Orbitron', sans-serif" }}
+                >
                   MINUTES
                 </p>
               </motion.div>
@@ -622,7 +650,7 @@ const Home = () => {
                     boxShadow: [
                       "0 0 20px rgba(34, 197, 94, 0.5)",
                       "0 0 30px rgba(34, 197, 94, 0.8)",
-                      "0 0 20px rgba(34, 197, 94, 0.5)"
+                      "0 0 20px rgba(34, 197, 94, 0.5)",
                     ],
                     scale: timeLeft.seconds % 2 === 0 ? [1, 1.05, 1] : 1,
                   }}
@@ -636,12 +664,15 @@ const Home = () => {
                     scale: {
                       duration: 0.2,
                       ease: "easeOut",
-                    }
+                    },
                   }}
                 >
-                  {String(timeLeft.seconds).padStart(2, '0')}
+                  {String(timeLeft.seconds).padStart(2, "0")}
                 </motion.div>
-                <p className="text-green-400 text-xs md:text-sm mt-2 font-semibold" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                <p
+                  className="text-green-400 text-xs md:text-sm mt-2 font-semibold"
+                  style={{ fontFamily: "'Orbitron', sans-serif" }}
+                >
                   SECONDS
                 </p>
               </motion.div>
@@ -651,14 +682,19 @@ const Home = () => {
 
         {/* Emergency Start Button */}
         <motion.div
-          className="mt-16"
+          className="mt-16 mb-10"
           variants={floatingVariants}
-          animate="animate"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
           <EmergencyButton onStartLoading={handleStartLoading} />
         </motion.div>
+
+        <button
+          className="apply-button "
+          data-hackathon-slug="YOUR-HACKATHON-SLUG"
+          data-button-theme="dark-inverted"
+        ></button>
 
         {/* Interactive particles */}
         <motion.div

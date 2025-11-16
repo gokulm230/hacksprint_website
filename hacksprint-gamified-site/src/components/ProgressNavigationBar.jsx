@@ -31,7 +31,7 @@ const ProgressNavigationBar = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      <div className="container mx-auto px-4 py-6 max-w-6xl">
+      <div className="mx-auto px-6 py-6 max-w-4xl mt-4 mb-2">
         {/* Navigation Points with Line */}
         <div className="flex justify-between items-center relative">
           {/* Straight Line */}
