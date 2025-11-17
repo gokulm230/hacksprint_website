@@ -687,7 +687,7 @@ const Home = () => {
                   HOURS
                 </p>
               </motion.div>
-
+ 
               {/* Minutes */}
               <motion.div
                 className="text-center"
